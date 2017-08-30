@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
+  <s:Body>
+    <ExecuteXMLString xmlns="http://tempuri.org/">
+      <request>&lt;DCRequest
+	xmlns=&quot;http://transunion.com/dc/extsvc&quot;&gt;
+	&lt;Authentication type=&quot;OnDemand&quot;&gt;
+		&lt;UserId&gt;username&lt;/UserId&gt;
+		&lt;Password&gt;Password&lt;/Password&gt;
+	&lt;/Authentication&gt;
+	&lt;RequestInfo&gt;
+		&lt;ExecutionMode&gt;NewWithContext&lt;/ExecutionMode&gt;
+		&lt;SolutionSetId&gt;00&lt;/SolutionSetId&gt;
+		&lt;ExecuteLatestVersion&gt;true&lt;/ExecuteLatestVersion&gt;
+	&lt;/RequestInfo&gt;
+	&lt;Fields&gt;
+		&lt;Field key=&quot;ApplicationReceiptDate&quot;&gt;22Aug2017&lt;/Field&gt;
+		&lt;Field key=&quot;Channel&quot;&gt;1&lt;/Field&gt;
+		&lt;Field key=&quot;CurrencyCode&quot;&gt;PHP&lt;/Field&gt;
+		&lt;Field key=&quot;CurrentDate&quot;&gt;22Aug2017&lt;/Field&gt;
+		&lt;Field key=&quot;EnquiryAccountType&quot;&gt;3000&lt;/Field&gt;
+		&lt;Field key=&quot;InquiryAmount&quot;&gt;931000&lt;/Field&gt;
+		&lt;Field key=&quot;Product&quot;&gt;1&lt;/Field&gt;
+		&lt;Field key=&quot;SubProduct&quot;&gt;1&lt;/Field&gt;
+		&lt;Field key=&quot;BCLib_BureauRequestType&quot;&gt;uat&lt;/Field&gt;
+		&lt;Field key=&quot;Applicants&quot;&gt;
+			&lt;![CDATA[
+				&lt;object&gt;
+					&lt;Applicant&gt;
+						&lt;Title&gt;1&lt;/Title&gt;
+						&lt;FirstName&gt;Daenerys&lt;/FirstName&gt;
+						&lt;MiddleName&gt;&lt;/MiddleName&gt;
+						&lt;LastName&gt;Stomborn&lt;/LastName&gt;
+						&lt;Gender&gt;1&lt;/Gender&gt;
+						&lt;DateOfBirth&gt;07Aug1987&lt;/DateOfBirth&gt;
+						&lt;PlaceOfBirth&gt;&lt;/PlaceOfBirth&gt;
+						&lt;CivilStatus&gt;S&lt;/CivilStatus&gt;
+						&lt;IdType&gt;TIN&lt;/IdType&gt;
+						&lt;IdNumber&gt;160083344&lt;/IdNumber&gt;
+						&lt;IdExpireDate&gt;01Jun2020&lt;/IdExpireDate&gt;
+						&lt;Citizenship&gt;PHL&lt;/Citizenship&gt;
+						&lt;NumberOfDependants&gt;3&lt;/NumberOfDependants&gt;
+						&lt;CarOwnership /&gt;
+						&lt;HomeOwnership /&gt;
+						&lt;YearsOfResidence&gt;10&lt;/YearsOfResidence&gt;
+						&lt;MothersMaidenName&gt;&lt;/MothersMaidenName&gt;
+						&lt;AddressType&gt;R&lt;/AddressType&gt;
+						&lt;AddressLine1&gt;test test test&lt;/AddressLine1&gt;
+						&lt;AddressLine2&gt;makati city&lt;/AddressLine2&gt;
+						&lt;AddressLine3&gt;&lt;/AddressLine3&gt;
+						&lt;AddressLine4&gt;&lt;/AddressLine4&gt;
+						&lt;PostalZipCode&gt;1880&lt;/PostalZipCode&gt;
+						&lt;Country&gt;PHL&lt;/Country&gt;
+						&lt;ContactNumberType&gt;R&lt;/ContactNumberType&gt;
+						&lt;CountryCode&gt;63&lt;/CountryCode&gt;
+						&lt;AreaCode&gt;918&lt;/AreaCode&gt;
+						&lt;PhoneNumber&gt;7035351&lt;/PhoneNumber&gt;
+						&lt;Extension&gt;&lt;/Extension&gt;
+						&lt;EmailAddress&gt;&lt;/EmailAddress&gt;
+						&lt;EmploymentType&gt;E&lt;/EmploymentType&gt;
+						&lt;EmploymentStatus&gt;01&lt;/EmploymentStatus&gt;
+						&lt;NatureOfBusiness&gt;99&lt;/NatureOfBusiness&gt;
+						&lt;Occupation&gt;99&lt;/Occupation&gt;
+						&lt;CompanyName&gt;XYZ Company&lt;/CompanyName&gt;
+						&lt;EmploymentTimeYears&gt;1&lt;/EmploymentTimeYears&gt;
+						&lt;EmploymentTimeMonths&gt;11&lt;/EmploymentTimeMonths&gt;
+						&lt;YearsInBusiness&gt;0&lt;/YearsInBusiness&gt;
+						&lt;GrossAnnualIncome&gt;600000&lt;/GrossAnnualIncome&gt;
+						&lt;GrossMonthlyIncome&gt;0&lt;/GrossMonthlyIncome&gt;
+						&lt;EmploymentCurrencyCode&gt;PHP&lt;/EmploymentCurrencyCode&gt;
+						&lt;PositionLevel /&gt;
+						&lt;PositionTitle&gt;&lt;/PositionTitle&gt;
+						&lt;SourceOfFunds /&gt;
+						&lt;AliasFirstName&gt;&lt;/AliasFirstName&gt;
+						&lt;AliasMiddleName&gt;&lt;/AliasMiddleName&gt;
+						&lt;AliasLastName&gt;&lt;/AliasLastName&gt;
+						&lt;AliasMothersMaidenName&gt;&lt;/AliasMothersMaidenName&gt;
+						&lt;BankCode&gt;&lt;/BankCode&gt;
+						&lt;CardReferenceNo&gt;&lt;/CardReferenceNo&gt;
+						&lt;CarMake&gt;&lt;/CarMake&gt;
+						&lt;CarModel&gt;&lt;/CarModel&gt;
+						&lt;SumOfAssets&gt;&lt;/SumOfAssets&gt;
+						&lt;EducationLevel /&gt;
+					&lt;/Applicant&gt;
+				&lt;/object&gt;
+			]]&gt;
+		&lt;/Field&gt;
+       &lt;Field key=&quot;Const_FolderPath&quot;&gt;C:\Localization\Simfiles\&lt;/Field&gt;
+	&lt;/Fields&gt;
+&lt;/DCRequest&gt;</request>
+    </ExecuteXMLString>
+  </s:Body>
+</s:Envelope>

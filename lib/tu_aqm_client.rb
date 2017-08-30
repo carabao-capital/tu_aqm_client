@@ -1,5 +1,7 @@
-require "tu_aqm_client/version"
+require "savon"
 
-module TuAqmClient
-  # Your code goes here...
-end
+require "tu_aqm_client/version"
+require "tu_aqm_client/soap_client"
+require "tu_aqm_client/errors"
+
+module TuAqmClient; end
