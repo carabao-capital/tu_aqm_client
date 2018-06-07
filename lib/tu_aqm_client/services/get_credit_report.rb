@@ -4,107 +4,26 @@ module TuAqmClient
     class MissingFieldsError < StandardError; end
 
     class GetCreditReport
-      attr_accessor :user_id
-      attr_accessor :password
-      attr_accessor :application_receipt_date
-      attr_accessor :current_date
-      attr_accessor :first_name
-      attr_accessor :last_name
-      attr_accessor :gender
-      attr_accessor :date_of_birth
-      attr_accessor :civil_status
-      attr_accessor :id_type
-      attr_accessor :id_number
-      attr_accessor :address_type
-      attr_accessor :address
-      attr_accessor :contact_number_type
-      attr_accessor :contact_number
-      attr_accessor :bureau_request_type
-      attr_accessor :enquiry_account_type
-      attr_accessor :inquiry_amount
-      attr_accessor :postal_zip_code
-      attr_accessor :country_code
-      attr_accessor :area_code
-      attr_accessor :company_name
-      attr_accessor :email_address
+      attr_accessor :request_params
 
-      def initialize(
-        user_id:,
-        password:,
-        application_receipt_date:,
-        current_date:,
-        first_name:,
-        last_name:,
-        gender:,
-        date_of_birth:,
-        civil_status:,
-        id_type:,
-        id_number:,
-        address_type:,
-        address:,
-        contact_number_type:,
-        contact_number:,
-        bureau_request_type:,
-        enquiry_account_type:,
-        inquiry_amount:,
-        postal_zip_code:,
-        country_code:,
-        area_code:,
-        company_name:,
-        email_address:
-      )
+      def initialize(params)
+        user_params = TuAqmClient::Models::User.new(params).as_json
+        current_date = DateFormatter::format(DateTime.now.to_date)
 
-        @user_id = user_id
-        @password = password
-        @application_receipt_date = application_receipt_date
-        @current_date = current_date
-        @first_name = first_name
-        @last_name = last_name
-        @gender = gender
-        @date_of_birth = date_of_birth
-        @civil_status = civil_status
-        @id_type = id_type
-        @id_number = id_number
-        @address_type = address_type
-        @address = address
-        @contact_number_type = contact_number_type
-        @contact_number = contact_number
-        @bureau_request_type = bureau_request_type
-        @enquiry_account_type = enquiry_account_type
-        @inquiry_amount = inquiry_amount
-        @postal_zip_code = postal_zip_code
-        @country_code = country_code
-        @area_code = area_code
-        @company_name = company_name
-        @email_address = email_address
+        request_params = user_params.merge({
+          user_id: params[:user_id],
+          password: params[:password],
+          application_receipt_date: current_date,
+          current_date: current_date,
+          bureau_request_type: 'prod',
+          enquiry_account_type: '3000',
+          inquiry_amount: '0',
+        })
       end
 
       def execute
-        response = TuAqmClient::Request::ExecuteXmlString.new(
-          user_id: user_id,
-          password: password,
-          application_receipt_date: application_receipt_date,
-          current_date: current_date,
-          first_name: first_name,
-          last_name: last_name,
-          gender: gender,
-          date_of_birth: date_of_birth,
-          civil_status: civil_status,
-          id_type: id_type,
-          id_number: id_number,
-          address_type: address_type,
-          address: address,
-          contact_number_type: contact_number_type,
-          contact_number: contact_number,
-          bureau_request_type: bureau_request_type,
-          enquiry_account_type: enquiry_account_type,
-          inquiry_amount: inquiry_amount,
-          postal_zip_code: postal_zip_code,
-          country_code: country_code,
-          area_code: area_code,
-          company_name: company_name,
-          email_address: email_address,
-        ).execute
+        response = TuAqmClient::Request::ExecuteXmlString.new(request_params)
+          .execute
 
         build_credit_report(response)
       end
