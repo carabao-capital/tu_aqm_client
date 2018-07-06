@@ -1,6 +1,8 @@
 module TuAqmClient
   module Models
     class User
+      include ActiveModel::Validations
+
       attr_accessor :first_name
       attr_accessor :last_name
       attr_accessor :date_of_birth
@@ -24,47 +26,45 @@ module TuAqmClient
       attr_accessor :employment_type
       attr_accessor :employment_status
 
-      def initialize(
-        first_name: ,
-        last_name: ,
-        gender: 3,
-        date_of_birth: ,
-        civil_status: 'U',
-        id_type:,
-        id_number:,
-        id_expiration_date: '',
-        address_type: 'R',
-        postal_zip_code: '0000',
-        country_code: '63',
-        area_code: '0',
-        company_name: 'Information Not Available',
-        email_address: ,
-        address: ,
-        contact_number_type: 'R',
-        contact_number: '9999999',
-        employment_type: 'S',
-        employment_status: '11',
-        **_
-      )
-        @first_name = first_name
-        @last_name = last_name
-        @gender = map_gender(gender)
-        @date_of_birth = DateFormatter::format(date_of_birth)
-        @civil_status = map_civil_status(civil_status)
-        @id_type = id_type
-        @id_number = format_id_number(id_type, id_number)
-        @id_expiration_date = id_expiration_date
-        @address_type = address_type
-        @address_1, @address_2, @address_3, @address_4 = split_full_address(address)
-        @contact_number_type = contact_number_type
-        @contact_number = contact_number
-        @postal_zip_code = postal_zip_code
-        @country_code = country_code
-        @area_code = area_code
-        @company_name = company_name
-        @email_address = email_address
-        @employment_type = employment_type
-        @employment_status = employment_status
+      validates :id_number, :id_type, presence: true
+      validates :id_expiration_date, presence: true, if: :has_expiration?
+
+      def has_expiration?
+        ['DL', 'PP', 'PRC'].include? id_type
+      end
+
+      def initialize(params = {})
+        params = params.merge({
+          address_type: 'R',
+          area_code: '0',
+          country_code: '63',
+          postal_zip_code: '0000',
+          company_name: 'Information Not Available',
+          contact_number_type: 'R',
+          contact_number: '9999999',
+          employment_type: 'S',
+          employment_status: '11',
+        })
+
+        @first_name = params[:first_name]
+        @last_name = params[:last_name]
+        @gender = map_gender(params[:gender])
+        @date_of_birth = DateFormatter::format(params[:date_of_birth])
+        @civil_status = map_civil_status(params[:civil_status])
+        @id_type = params[:id_type]
+        @id_number = format_id_number(params[:id_type], params[:id_number])
+        @id_expiration_date = params[:id_expiration_date]
+        @address_type = params[:address_type]
+        @address_1, @address_2, @address_3, @address_4 = split_full_address(params[:address])
+        @contact_number_type = params[:contact_number_type]
+        @contact_number = params[:contact_number]
+        @postal_zip_code = params[:postal_zip_code]
+        @country_code = params[:country_code]
+        @area_code = params[:area_code]
+        @company_name = params[:company_name]
+        @email_address = params[:email_address]
+        @employment_type = params[:employment_type]
+        @employment_status = params[:employment_status]
       end
 
       def as_param

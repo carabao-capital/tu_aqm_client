@@ -6,13 +6,10 @@ module TuAqmClient
     class GetCreditReport
       attr_accessor :request_params
 
-      def initialize(**params)
-        user_params = TuAqmClient::Models::User.new(params).as_param
+      def initialize(params)
         current_date = DateFormatter::format(DateTime.now.to_date)
 
-        @request_params = user_params.merge({
-          user_id: params[:user_id],
-          password: params[:password],
+        @request_params = params.merge({
           application_receipt_date: current_date,
           current_date: current_date,
           bureau_request_type: 'prod',
