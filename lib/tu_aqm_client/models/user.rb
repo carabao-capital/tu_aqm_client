@@ -44,6 +44,7 @@ module TuAqmClient
           contact_number: '9999999',
           employment_type: 'S',
           employment_status: '11',
+          id_expiration_date: Date.today,
         })
 
         @first_name = params[:first_name]

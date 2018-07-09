@@ -4,6 +4,7 @@ require "saxerator"
 require "active_model/validations"
 require "active_support/core_ext/hash/conversions"
 require "active_support/json"
+require "date"
 
 require "tu_aqm_client/version"
 require "tu_aqm_client/base_request"
