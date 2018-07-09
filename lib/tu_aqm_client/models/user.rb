@@ -47,8 +47,8 @@ module TuAqmClient
           id_expiration_date: Date.today,
         })
 
-        @first_name = params[:first_name]
-        @last_name = params[:last_name]
+        @first_name = remove_accent(params[:first_name])
+        @last_name = remove_accent(params[:last_name])
         @gender = map_gender(params[:gender])
         @date_of_birth = DateFormatter::format(params[:date_of_birth])
         @civil_status = map_civil_status(params[:civil_status])
@@ -66,6 +66,10 @@ module TuAqmClient
         @email_address = params[:email_address]
         @employment_type = params[:employment_type]
         @employment_status = params[:employment_status]
+      end
+
+      def remove_accent(name_field)
+        I18n.transliterate(name_field)
       end
 
       def as_param
