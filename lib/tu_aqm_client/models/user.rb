@@ -2,6 +2,7 @@ module TuAqmClient
   module Models
     class User
       include ActiveModel::Validations
+      include ActiveSupport::JSON
 
       attr_accessor :first_name
       attr_accessor :last_name

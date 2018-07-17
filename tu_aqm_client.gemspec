@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "httparty"
   spec.add_dependency "htmlentities"
   spec.add_dependency "activesupport"
+  spec.add_dependency "activemodel"
   spec.add_dependency "saxerator"
 
   spec.add_development_dependency("vcr", "~> 3.0.1")
