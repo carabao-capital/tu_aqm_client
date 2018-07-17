@@ -1,9 +1,9 @@
 require "httparty"
 require "htmlentities"
 require "saxerator"
-require "active_model/validations"
-require "active_support/core_ext/hash/conversions"
-require "active_support/json"
+require "active_support"
+require "active_support/core_ext"
+require "active_model"
 require "date"
 require "i18n"
 

@@ -4,23 +4,24 @@ module TuAqmClient
     class MissingFieldsError < StandardError; end
 
     class GetCreditReport
-      attr_accessor :request_params
+      attr_accessor :request_body
 
       def initialize(params)
         current_date = DateFormatter::format(DateTime.now.to_date)
 
-        @request_params = params.merge({
+        request_params = params.merge({
           application_receipt_date: current_date,
           current_date: current_date,
           bureau_request_type: 'prod',
           enquiry_account_type: '3000',
           inquiry_amount: '1',
         })
+
+        @request_body = TuAqmClient::Request::ExecuteXmlString.new(request_params)
       end
 
       def execute
-        response = TuAqmClient::Request::ExecuteXmlString.new(request_params)
-          .execute
+        response = request_body.execute
 
         build_credit_report(response)
       end
