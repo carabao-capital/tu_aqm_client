@@ -35,7 +35,7 @@ module TuAqmClient
       end
 
       def initialize(params = {})
-        params = params.merge({
+        params = {
           address_type: 'R',
           area_code: '0',
           country_code: '63',
@@ -46,7 +46,7 @@ module TuAqmClient
           employment_type: 'S',
           employment_status: '11',
           id_expiration_date: Date.today,
-        })
+        }.merge(params)
 
         @first_name = remove_accent(params[:first_name])
         @last_name = remove_accent(params[:last_name])
