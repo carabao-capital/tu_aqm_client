@@ -45,7 +45,6 @@ module TuAqmClient
           contact_number: '9999999',
           employment_type: 'S',
           employment_status: '11',
-          id_expiration_date: Date.today,
         }.merge(params)
 
         @first_name = remove_accent(params[:first_name])
@@ -55,7 +54,7 @@ module TuAqmClient
         @civil_status = map_civil_status(params[:civil_status])
         @id_type = params[:id_type]
         @id_number = format_id_number(params[:id_type], params[:id_number])
-        @id_expiration_date = params[:id_expiration_date]
+        @id_expiration_date = params[:id_expiration_date] || Date.today
         @address_type = params[:address_type]
         @address_1, @address_2, @address_3, @address_4 = split_full_address(params[:address])
         @contact_number_type = params[:contact_number_type]
