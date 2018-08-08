@@ -27,7 +27,16 @@ module TuAqmClient
       attr_accessor :employment_type
       attr_accessor :employment_status
 
-      validates :id_number, :id_type, presence: true
+      validates :first_name,
+                :last_name,
+                :date_of_birth,
+                :gender,
+                :civil_status,
+                :contact_number,
+                :email_address,
+                :id_number,
+                :id_type,
+                presence: true
       validates :id_expiration_date, presence: true, if: :has_expiration?
 
       def has_expiration?
