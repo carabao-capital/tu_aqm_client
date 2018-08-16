@@ -4,7 +4,7 @@ module TuAqmClient
     class MissingFieldsError < StandardError; end
 
     class GetCreditReport
-      attr_accessor :request_body
+      attr_accessor :request_body, :response
 
       def initialize(params)
         current_date = DateFormatter::format(DateTime.now.to_date)
@@ -21,9 +21,9 @@ module TuAqmClient
       end
 
       def execute
-        response = request_body.execute
+        @response = request_body.execute
 
-        build_credit_report(response)
+        build_credit_report(@response)
       end
 
       private
