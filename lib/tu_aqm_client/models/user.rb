@@ -61,7 +61,7 @@ module TuAqmClient
         @gender = map_gender(params[:gender])
         @date_of_birth = DateFormatter::format(params[:date_of_birth])
         @civil_status = map_civil_status(params[:civil_status])
-        @id_type = params[:id_type]
+        @id_type = format_id_type(params[:id_type])
         @id_number = format_id_number(params[:id_type], params[:id_number])
         @id_expiration_date = params[:id_expiration_date] || Date.today
         @address_type = params[:address_type]
@@ -98,6 +98,13 @@ module TuAqmClient
         when 'f' then 1
         when 'm' then 2
         else 3
+        end
+      end
+
+      def format_id_type(id_type)
+        case id_type
+        when "POSTALID" then "PID"
+        else id_type
         end
       end
 
