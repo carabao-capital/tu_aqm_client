@@ -56,8 +56,8 @@ module TuAqmClient
           employment_status: '11',
         }.merge(params)
 
-        @first_name = remove_accent(params[:first_name])
-        @last_name = remove_accent(params[:last_name])
+        @first_name = format_name_field(params[:first_name])
+        @last_name = format_name_field(params[:last_name])
         @gender = map_gender(params[:gender])
         @date_of_birth = DateFormatter::format(params[:date_of_birth])
         @civil_status = map_civil_status(params[:civil_status])
@@ -75,6 +75,10 @@ module TuAqmClient
         @email_address = params[:email_address]
         @employment_type = params[:employment_type]
         @employment_status = params[:employment_status]
+      end
+
+      def format_name_field(name_field)
+        remove_accent(name_field).strip
       end
 
       def remove_accent(name_field)
