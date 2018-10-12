@@ -78,7 +78,7 @@ module TuAqmClient
       end
 
       def format_name_field(name_field)
-        remove_accent(name_field).strip
+        remove_accent(name_field).strip.gsub(/[^a-z]/i, "")
       end
 
       def remove_accent(name_field)
