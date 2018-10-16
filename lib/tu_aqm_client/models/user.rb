@@ -108,6 +108,8 @@ module TuAqmClient
       def format_id_type(id_type)
         case id_type
         when "POSTALID" then "PID"
+        when "VOTERID" then "VID"
+        when "POLICECLEARANCE" then "PC"
         else id_type
         end
       end
