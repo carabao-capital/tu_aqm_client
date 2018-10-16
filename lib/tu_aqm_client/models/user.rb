@@ -111,6 +111,7 @@ module TuAqmClient
         when "VOTERID" then "VID"
         when "POLICECLEARANCE" then "PC"
         else id_type
+          id_type.length <= 5 ? id_type : "OTHER"
         end
       end
 
